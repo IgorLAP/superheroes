@@ -4,10 +4,11 @@ export const SearchArea = styled.div`
     padding: 20px;
     display: flex;    
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    height: calc(100vh - 200px);
 
     form{
+        padding: 20px 0;
 
         input, button{
             outline: 0;
@@ -44,24 +45,36 @@ export const SearchArea = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
 
         .loading{
             width: 50px;
             height: auto;
         }
         .resultItem{
+            color: #000;
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 220px;
-            height: 200px;
+            height: 280px;
             margin-right: 10px;
+            margin-bottom: 10px;
             padding: 10px;
             border: 1px solid #DDD;
+            transition: all ease .2s;
 
+            &:hover{
+                color: #FFF;
+                background-color: #48ABC2;
+            }
+            p{
+                font-size: 20px;
+                padding: 5px 0;
+            }
             img{
                 width: 90%;
-                height: 90%;
+                height: 85%;
             }
         }
     }

@@ -3,10 +3,12 @@ import styled from 'styled-components';
 export const HomeArea = styled.div`
     padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: calc(100vh - 200px);
+    align-items: center;
 
     form{
+        padding: 20px 0;
 
         input, button{
             outline: 0;
@@ -35,5 +37,44 @@ export const HomeArea = styled.div`
                 background-color: #1288A3;
             }
         }
+    }
+    .loading{
+        padding: 20px 0;
+        width: 50px;
+        height: auto;
+    }
+    .allHeroes{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 10px;
+
+        
+        .resultItem{
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &:hover{
+                color: #FFF;
+            }
+            
+            .heroImg{
+                width: 75%;
+                height: 10%;
+            }
+        }
+    }
+    .toTop{
+        cursor: pointer;
+        position: fixed;
+        bottom: -20%;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background-color: #48abc2;
+        text-transform: uppercase;
+        border-radius: 5px;
     }
 `;

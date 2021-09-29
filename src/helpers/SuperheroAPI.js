@@ -10,7 +10,9 @@ const superheroapi = {
         return json;
     },
     getAllHeroes: async() => {
-
+        const req = await fetch('https://akabab.github.io/superhero-api/api/all.json');
+        const json = await req.json();
+        return json;
     },
     getHero: async (id) => {
         const req = await fetch(`${proxyUrl+BASE_URL+API_KEY}/${id}`);

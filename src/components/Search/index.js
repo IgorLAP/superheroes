@@ -25,7 +25,6 @@ const Search = ()=>{
         getSearch();
     },[])
 
-    console.log(herosList);
 
     return (
         <PageContainer>
