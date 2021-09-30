@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {HomeArea} from './styled';
-import {PageContainer} from '../partials';
-import SuperheroAPI from '../../helpers/SuperheroAPI';
-import HeroItem from '../HeroItem';
+import {PageContainer} from '../../partials';
+import SuperheroAPI from '../../../helpers/SuperheroAPI';
+import HeroItem from '../../partials/HeroItem';
 
 
 const Home = ()=>{
     const api = SuperheroAPI();
     
-    const [adsTotal, setAdsTotal] = useState(0);
     const [herosList, setHerosList] = useState([]);
-    const [pageCount, setPageCount] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [cursor, setCursor] = useState(false);
 
     useEffect(()=>{
         const getAllHeroes = async()=>{
@@ -23,12 +22,22 @@ const Home = ()=>{
     },[])
     
     useEffect(()=>{
-        if(herosList.length > 0 ){
-            setPageCount( Math.ceil( adsTotal / (herosList.length / 2) ) );
-        } else {
-            setPageCount( 0 );
+        const handleToTop = ()=> {
+            if(window.scrollY > 400){
+                setCursor(true);
+            } else {
+                setCursor(false);
+            }
         }
-    },[adsTotal])
+        window.addEventListener('scroll', handleToTop);
+    },[])
+    
+    useEffect(()=>{
+        const handleClick = ()=>{
+            window.scrollTo(0,0);
+        }
+        document.querySelector('.toTop').addEventListener('click', handleClick);
+    },[])
 
     return (
         <PageContainer>
@@ -49,7 +58,9 @@ const Home = ()=>{
                         )
                     }
                 </div>
-                <div className="toTop"></div>
+                <div className={cursor ? "toTop active" : "toTop"}>
+                    <img src="/goTop.png" alt="goTop" />
+                </div>
             </HomeArea>
         </PageContainer>
     )

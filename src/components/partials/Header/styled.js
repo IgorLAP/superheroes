@@ -14,6 +14,11 @@ export const HeaderArea = styled.div`
         .leftSide {
             height: 70px;
 
+            &:hover img{
+                height: 75px;
+                transform: translateY(-3px);
+            }
+
             a, img{
                 height: inherit;
             }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {SearchArea} from './styled';
-import {PageContainer} from '../partials';
-import SuperheroAPI from '../../helpers/SuperheroAPI';
+import {PageContainer} from '../../partials';
+import SuperheroAPI from '../../../helpers/SuperheroAPI';
 import {useLocation, Link} from 'react-router-dom';
 
 

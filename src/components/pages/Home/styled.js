@@ -45,7 +45,7 @@ export const HomeArea = styled.div`
     }
     .allHeroes{
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-gap: 10px;
 
         
@@ -70,11 +70,20 @@ export const HomeArea = styled.div`
         cursor: pointer;
         position: fixed;
         bottom: -20%;
-        right: 10px;
+        right: 4%;
         width: 30px;
         height: 30px;
         background-color: #48abc2;
         text-transform: uppercase;
         border-radius: 5px;
+        transition: all ease .4s;
+
+        &.active{
+            bottom: 10%;
+        }
+
+        img{
+            width: 30px;
+        }
     }
 `;

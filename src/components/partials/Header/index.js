@@ -11,7 +11,7 @@ const Header = ()=>{
                 </a>
             </div>
             <div className="rightSide">
-                <span>SuperHeros Info</span>
+                <span>SuperHeroes Info</span>
             </div>
             </header>
         </HeaderArea>
