@@ -3,6 +3,7 @@ import {HomeArea} from './styled';
 import {PageContainer} from '../../partials';
 import SuperheroAPI from '../../../helpers/SuperheroAPI';
 import HeroItem from '../../partials/HeroItem';
+import Modal from '../../partials/Modal';
 
 
 const Home = ()=>{
@@ -11,6 +12,8 @@ const Home = ()=>{
     const [herosList, setHerosList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cursor, setCursor] = useState(false);
+    const [modalCreateVisible, setModalCreateVisible] = useState(false);
+    const [modalViewVisible, setModalViewVisible] = useState(false);
 
     useEffect(()=>{
         const getAllHeroes = async()=>{
@@ -39,6 +42,14 @@ const Home = ()=>{
         document.querySelector('.toTop').addEventListener('click', handleClick);
     },[])
 
+    const handleCreateGroup = ()=>{
+        setModalCreateVisible(true);
+    }
+
+    const handleViewGroup = ()=> {
+        setModalViewVisible(true);
+    }
+
     return (
         <PageContainer>
             <HomeArea>
@@ -48,6 +59,14 @@ const Home = ()=>{
                     </label>
                     <button>Pesquisar</button>
                 </form>
+                <div className="groups">
+                    <button onClick={handleCreateGroup}>
+                        <div className="createGroup"><img src="/plusIcon.png" alt="add group"/> Criar grupo(s)</div>
+                    </button>
+                    <button onClick={handleViewGroup}>
+                        <div className="viewGroups"><img src="eyeIcon.png" alt="see groups"/> Visualizar grupo(s)</div>
+                    </button>
+                </div>
                 {loading === true &&
                     <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="loading" className="loading" />
                 }
@@ -62,6 +81,7 @@ const Home = ()=>{
                     <img src="/goTop.png" alt="goTop" />
                 </div>
             </HomeArea>
+            <Modal createVisbile={modalCreateVisible} setCreate={setModalCreateVisible} viewVisible={modalViewVisible} setView={setModalViewVisible}/>
         </PageContainer>
     )
 }

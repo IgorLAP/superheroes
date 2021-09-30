@@ -38,6 +38,41 @@ export const HomeArea = styled.div`
             }
         }
     }
+    .groups{
+        display: flex;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        
+        button{
+            outline: 0;
+            border: 0;
+            background: transparent;
+        }
+        .createGroup, .viewGroups{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 10px;
+            color: #FFF;
+            width: 200px;
+            height: 50px;
+            background-color: #48ABC2;
+            margin-right: 100px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 400;
+
+            &:hover{
+                background-color: #1288A3;
+            }
+        }
+        img{
+            width: 35px;
+            margin-right: 10px;
+            
+        }
+    }
     .loading{
         padding: 20px 0;
         width: 50px;
