@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {ModalBackground, ModalArea} from './styled';
+import {Link} from 'react-router-dom';
 
 const Modal = (props)=> {
+    //var naruto;
+    //let Stor = localStorage.getItem(`${naruto}`, null);
 
-    const [name, setName] = useState( localStorage.getItem('name') );
-    useEffect(()=>{
-        localStorage.setItem('name', name);
-    },[name])
+    //const [group, setGroup] = useState( localStorage.setItem(`${naruto}`, null) );
+    const [ groupsList, setGroupsList] = useState( JSON.parse(localStorage.getItem('grupo')));
+
 
     const handleBack = ()=>{
         props.setCreate(false);
@@ -14,7 +16,10 @@ const Modal = (props)=> {
     }
     const handleSubmit = (e)=>{
         e.preventDefault();
-    }
+        //setGroupsList(group);
+    } 
+
+    console.log(groupsList)
 
     return (
         <>
@@ -22,11 +27,11 @@ const Modal = (props)=> {
             <ModalBackground>
                 <ModalArea>
                     <div className="closeBtn" onClick={handleBack}><span>X</span></div>
-                    <p>Criar grupo(s)</p>
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" value={name} onChange={e=>setName(e.target.value)} placeholder="Nome do grupo:" />
-                        <button>Confirmar</button>
-                    </form>
+                    {/*<p>Criar/Editar Grupo</p>
+                    <form onClick={handleSubmit}>
+                        <input type="text" value={group} onChange={e=>setGroup(e.target.value)} placeholder="Nome do grupo:" />
+                        <button onClick={handleBack}>Confirmar</button>
+                    </form>*/}
                 </ModalArea>
             </ModalBackground>
         }
@@ -34,8 +39,16 @@ const Modal = (props)=> {
             <ModalBackground>
                 <ModalArea>
                     <div className="closeBtn" onClick={handleBack}><span>X</span></div>
-                    Visualizar grupo(s)
-                    {name}
+                    <p>Grupo:</p> <br />
+                    <div className="modalHeros">
+                    {groupsList &&
+                        groupsList.map((i,k)=>
+                            <Link to={`/hero/${i.id}`}>
+                            <img className="modalImg" src={i.src} key={k} alt="" />
+                            </Link>   
+                        )
+                    }
+                    </div>
                 </ModalArea>
             </ModalBackground>
         }

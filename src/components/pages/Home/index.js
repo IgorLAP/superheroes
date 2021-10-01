@@ -64,7 +64,7 @@ const Home = ()=>{
                         <div className="createGroup"><img src="/plusIcon.png" alt="add group"/> Criar grupo(s)</div>
                     </button>
                     <button onClick={handleViewGroup}>
-                        <div className="viewGroups"><img src="eyeIcon.png" alt="see groups"/> Visualizar grupo(s)</div>
+                        <div className="viewGroups"><img src="eyeIcon.png" alt="see groups"/> Visualizar grupo</div>
                     </button>
                 </div>
                 {loading === true &&

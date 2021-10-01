@@ -16,6 +16,28 @@ export const HeroItemArea = styled.div`
             &:hover{
                 color: #FFF;
                 background-color: #48ABC2;
+
+                & .add, & .remove{
+                    display: block;
+                }
+            }
+            .add, .remove{
+                display: none;
+                color: #FFF;
+                right: -106%;
+                width: 15px;
+                font-size: 20px;
+                text-align: center;
+            }
+            .add{
+                position: relative;
+                top: -83%;
+                background-color: green;
+            }
+            .remove{
+                position: relative;
+                top: -73%;
+                background-color: red;
             }
             p{
                 font-size: 20px;

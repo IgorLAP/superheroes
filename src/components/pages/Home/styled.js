@@ -6,6 +6,7 @@ export const HomeArea = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     form{
         padding: 20px 0;
@@ -81,7 +82,10 @@ export const HomeArea = styled.div`
     .allHeroes{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 10px;
+
+        .itemHero{
+            margin-right: 30px;
+        }
 
         
         .resultItem{

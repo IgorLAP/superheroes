@@ -18,6 +18,21 @@ export const ModalArea = styled.div`
     padding: 20px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    width: 550px;
+    height: 300px;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #48ABC2; 
+        border-radius: 10px;
+
+        &:hover{
+            background: #1288A3; 
+        }
+    }
 
     .closeBtn{
         color: #FFF;
@@ -29,6 +44,15 @@ export const ModalArea = styled.div`
             font-size: 20px;
             border-radius: 5px;
             width: 200px;
+        }
+    }
+    .modalHeros{
+        width: 100%;
+        
+        .modalImg{
+            margin-right: 10px;
+            width: 25%;
+            border-radius: 10px;
         }
     }
     p{  
