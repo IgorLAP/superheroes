@@ -34,4 +34,26 @@ export const HeaderArea = styled.div`
             }
         }
     }
+
+@media (max-width: 768px){
+    padding: 0px 20px;
+}
+
+@media (max-width: 375px){
+    .leftSide{
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        a, img{
+            height: 50px !important;
+        }
+    }
+    .rightSide{
+        font-size: 17px !important;
+        span{
+
+        }
+    }
+}
 `;

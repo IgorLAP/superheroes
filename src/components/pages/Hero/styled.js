@@ -22,12 +22,17 @@ export const HeroArea = styled.div`
         box-shadow: 1px 1px 10px 5px #000;
         transition: all ease .3s;
         
-
         &:hover{
             box-shadow: 1px 1px 10px 10px #48ABC2;
             transform: translate(-5px,-5px);
         }
-        
+        span{
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
         .heroName{
             text-align: center;
             padding-top: 10px;
@@ -35,14 +40,6 @@ export const HeroArea = styled.div`
         }
         .heroInfos{
             display: flex;
-
-            span{
-                display: inline-block;
-                text-transform: uppercase;
-                font-size: 15px;
-                font-weight: 700;
-                margin: 10px 0;
-            }
             
         }
 
@@ -58,8 +55,8 @@ export const HeroArea = styled.div`
                 }
 
             }
-            .moreInfos{
-                margin: 20px 0;
+            .biography{
+                margin: 10px 0;
             }
         }
         .rightSide{
@@ -84,5 +81,47 @@ export const HeroArea = styled.div`
         text-align: center;
         margin-top: 20px;
         max-width: 400px;
+        
+        .moreInfos{
+            margin: 20px 0;
+        }
     }
+
+@media (max-width: 768px){
+    .hero{
+        margin: 20px;
+    }
+}
+@media (max-width: 425px) {
+    .hero{
+        min-width: 300px;
+        max-width: 425px;
+        
+        .heroInfos{
+            flex-direction: column;
+            justify-content: center;
+
+            .leftSide{
+
+                img{
+                    width: 100% !important;
+                    height: auto !important;
+                    border: 1px solid #000;
+                    border-radius: 25px;
+                }
+                .powerStats{
+                width: 100% !important;
+                height: auto !important;
+
+                }
+            }
+
+            .rightSide{
+                flex: 0;
+                margin: 0;
+
+            }
+        } 
+    }
+}
 `;

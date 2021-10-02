@@ -78,4 +78,46 @@ export const SearchArea = styled.div`
             }
         }
     }
+
+@media (max-width: 425px){
+    form{
+        padding: 20px 0;
+        
+        label{
+            width: 300px;
+
+            input{
+                margin: 0;
+            }
+        }
+        button{
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 0;
+        }
+    }
+
+    a{
+        display: flex;
+        width: 50%;
+        
+        .resultItem{
+            
+        }
+    }
+}
+@media (max-width: 320px){
+    
+
+    a{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        
+        .resultItem{
+            
+        }
+    }
+}
 `;

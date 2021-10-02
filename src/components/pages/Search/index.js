@@ -3,7 +3,6 @@ import {SearchArea} from './styled';
 import {PageContainer} from '../../partials';
 import SuperheroAPI from '../../../helpers/SuperheroAPI';
 import {useLocation, Link} from 'react-router-dom';
-import HeroItem from '../../partials/HeroItem';
 
 
 const Search = ()=>{

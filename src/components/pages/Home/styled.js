@@ -6,7 +6,7 @@ export const HomeArea = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    flex-wrap: wrap;
 
     form{
         padding: 20px 0;
@@ -80,11 +80,12 @@ export const HomeArea = styled.div`
         height: auto;
     }
     .allHeroes{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
         .itemHero{
-            margin-right: 30px;
+            width: 20%;
         }
 
         
@@ -125,4 +126,52 @@ export const HomeArea = styled.div`
             width: 30px;
         }
     }
+
+@media (max-width: 768px){
+    .heroImg{
+        width: 100% !important;
+        height: 30% !important;
+    }
+    .itemHero{
+        width: 23% !important;
+    }
+}
+@media (max-width: 425px){
+    form{
+        padding: 20px 0;
+        
+        label{
+            width: 300px;
+
+            input{
+                margin: 0;
+            }
+        }
+        button{
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 0;
+        }
+    }
+    .groups{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        button{
+            width: 200px;
+            margin-top: 20px;
+        }
+        .createGroup, .viewGroups{
+            width: 100%;
+        }
+    }
+    .allHeroes{
+
+        .itemHero{
+            width: 45% !important;
+        }
+    }
+}
 `;

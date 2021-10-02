@@ -47,4 +47,9 @@ export const HeroItemArea = styled.div`
                 width: 90%;
                 height: 85%;
             }
+@media (max-width: 768px){
+    p{
+        font-size: 15px;
+    }
+}
 `;

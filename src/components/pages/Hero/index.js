@@ -13,6 +13,7 @@ const Hero = ()=>{
     const [bioObject, setBioObject] = useState({});
     const [conObject, setConObject] = useState({});
     const [appObject, setAppObject] = useState({});
+    const [inWidth, setInWidth] = useState( false );
 
     useEffect(()=>{
         const getHero = async( id )=>{
@@ -26,7 +27,7 @@ const Hero = ()=>{
         getHero( id );
     },[])
 
-    
+
     //Desestruturadores
    const { 
         "first-appearance" : firstAppearance, 
@@ -41,6 +42,7 @@ const Hero = ()=>{
         "eye-color" : eyeColor,
         "hair-color" : hairColor,
     } = appObject;
+    
     
 
     return (
@@ -65,25 +67,19 @@ const Hero = ()=>{
                             <p>Combate</p><ProgressBar data={heroInfo.powerstats.combat}></ProgressBar>
                         </div>
                         }
-                        
-                        <div className="moreInfos">
-                            <span>Mais informações</span>
-                            <div className="work">
-                            {heroInfo.work && 
-                                <>
-                                <div className="occupation"><strong>Ocupação: </strong>{heroInfo.work.occupation}</div>
-                                <div className="base"><strong>Base: </strong>{heroInfo.work.base}</div>
+                        <div className="biography">
+                            <span>Informações principais</span>
+                            {heroInfo.biography &&
+                                <>  
+                                    <div className="bioInfo"><strong>Nome Completo:</strong> {fullName}</div>
+                                    <div className="bioInfo"><strong>Primeira aparição:</strong> {firstAppearance}</div>
+                                    <div className="bioInfo"><strong>Alter-Ego:</strong> {alterEgos !== "No alter egos found" ? "Nenhum alter ego encontrado" : alterEgos}</div>
+                                    <div className="bioInfo"><strong>Local de Nascimento:</strong> {placeBirth}</div>
+                                    <div className="bioInfo"><strong>Editora: </strong>{heroInfo.biography.publisher}</div>
+                                    <div className="bioInfo"><strong>Aliados: </strong>{heroInfo.biography.aliases.join(', ')}</div>
+                                    <div className="bioInfo"><strong>Alinhamento: </strong>{heroInfo.biography.alignment === "good" ? "Bom" : "Mau"}</div>
                                 </>
                             }
-                            </div>
-                            <div className="connection">
-                                {heroInfo.connections &&
-                                <>
-                                <div className="group-affiliation"><strong>Grupos afiliados: </strong>{groups}</div>
-                                <div className="relatives"><strong>Parentes: </strong>{heroInfo.connections.relatives}</div>
-                                </>
-                                }
-                            </div>
                         </div>
                     </div>
                     <div className="rightSide">
@@ -104,18 +100,24 @@ const Hero = ()=>{
                     </div>
                     </div>
                     <div className="bottomInfos">
-                        <div className="biography">
-                            {heroInfo.biography &&
-                                <>  
-                                    <div className="bioInfo"><strong>Nome Completo:</strong> {fullName}</div>
-                                    <div className="bioInfo"><strong>Primeira aparição:</strong> {firstAppearance}</div>
-                                    <div className="bioInfo"><strong>Alter-Ego:</strong> {alterEgos !== "No alter egos found" ? "Nenhum alter ego encontrado" : alterEgos}</div>
-                                    <div className="bioInfo"><strong>Local de Nascimento:</strong> {placeBirth}</div>
-                                    <div className="bioInfo"><strong>Editora: </strong>{heroInfo.biography.publisher}</div>
-                                    <div className="bioInfo"><strong>Aliados: </strong>{heroInfo.biography.aliases.join(', ')}</div>
-                                    <div className="bioInfo"><strong>Alinhamento: </strong>{heroInfo.biography.alignment === "good" ? "Bom" : "Mau"}</div>
+                        <div className="moreInfos">
+                            <span>Mais informações</span>
+                            <div className="work">
+                            {heroInfo.work && 
+                                <>
+                                <div className="occupation"><strong>Ocupação: </strong>{heroInfo.work.occupation}</div>
+                                <div className="base"><strong>Base: </strong>{heroInfo.work.base}</div>
                                 </>
                             }
+                            </div>
+                            <div className="connection">
+                                {heroInfo.connections &&
+                                <>
+                                <div className="group-affiliation"><strong>Grupos afiliados: </strong>{groups}</div>
+                                <div className="relatives"><strong>Parentes: </strong>{heroInfo.connections.relatives}</div>
+                                </>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

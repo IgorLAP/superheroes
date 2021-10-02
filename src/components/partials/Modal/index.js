@@ -3,10 +3,6 @@ import {ModalBackground, ModalArea} from './styled';
 import {Link} from 'react-router-dom';
 
 const Modal = (props)=> {
-    //var naruto;
-    //let Stor = localStorage.getItem(`${naruto}`, null);
-
-    //const [group, setGroup] = useState( localStorage.setItem(`${naruto}`, null) );
     const [ groupsList, setGroupsList] = useState( JSON.parse(localStorage.getItem('grupo')));
 
 
@@ -16,10 +12,8 @@ const Modal = (props)=> {
     }
     const handleSubmit = (e)=>{
         e.preventDefault();
-        //setGroupsList(group);
     } 
 
-    console.log(groupsList)
 
     return (
         <>
@@ -43,7 +37,7 @@ const Modal = (props)=> {
                     <div className="modalHeros">
                     {groupsList &&
                         groupsList.map((i,k)=>
-                            <Link to={`/hero/${i.id}`}>
+                            <Link key={k} to={`/hero/${i.id}`}>
                             <img className="modalImg" src={i.src} key={k} alt="" />
                             </Link>   
                         )

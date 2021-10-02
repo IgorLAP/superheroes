@@ -49,10 +49,18 @@ export const ModalArea = styled.div`
     .modalHeros{
         width: 100%;
         
+        a{
+            
+        }
         .modalImg{
-            margin-right: 10px;
             width: 25%;
             border-radius: 10px;
+            transform: scale(0.9);
+            transition: all ease .2s;
+
+            &:hover{
+                transform: scale(1);
+            }
         }
     }
     p{  
@@ -69,4 +77,19 @@ export const ModalArea = styled.div`
             margin-bottom: 15px;
         }
     }
+
+@media( max-width: 425px){
+    width: 320px;
+
+    .modalImg{
+        width: 50% !important;
+    }
+}
+@media( max-width: 320px){
+    width: 280px;
+
+    .modalImg{
+        width: 50% !important;
+    }
+}
 `;
