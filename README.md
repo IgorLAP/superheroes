@@ -16,4 +16,4 @@
 
 ![cors preview](https://i.imgur.com/6pjmtsp.gif)
 
-## Link: em breve
+## Link: [Superheroes](https://zen-payne-7f23c8.netlify.app)
