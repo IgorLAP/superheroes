@@ -20,7 +20,8 @@ export default (props)=>{
 
     const handleAdd = (e)=>{
         let url = e.target.parentElement.href;
-        let id = url.replace('http://localhost:3000/hero/','');
+        let currentUrl = window.location.href.toString();
+        let id = url.replace(currentUrl+'hero/','');
         let src = e.target.previousElementSibling.children[1].src;
         let tempObj = {id, src};
         
@@ -46,7 +47,8 @@ export default (props)=>{
     
     const handleRemove = (e)=>{
         let url = e.target.parentElement.href;
-        let id = url.replace('http://localhost:3000/hero/','');
+        let currentUrl = window.location.href.toString();
+        let id = url.replace(currentUrl+'hero/','');
         let src = e.target.previousElementSibling.previousElementSibling.children[1].src;
         
         for(let i=0;i<favorites.length; i++){
