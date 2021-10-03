@@ -35,15 +35,24 @@ export const ModalArea = styled.div`
     }
 
     .closeBtn{
-        color: #FFF;
-        text-align: end;
-        cursor: pointer;
-        
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+
         span{
-            background-color: red;
-            font-size: 20px;
-            border-radius: 5px;
-            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 20px;
+            background-color: #FF0000;
+            color: #EDECEC;
+            font-size: 28px;
+            width: 35px;
+            height: 35px;
+
+            &:hover{
+                color: #FFF;
+                background-color: #AD0303;
+            }
         }
     }
     .modalHeros{

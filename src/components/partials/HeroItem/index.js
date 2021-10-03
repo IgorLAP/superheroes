@@ -58,8 +58,14 @@ export default (props)=>{
                 localStorage.setItem('grupo', JSON.stringify(favorites));
                 window.location.href = '/';
             } else {
-                alert('Personagem não está na sua lista!');
-                e.preventDefault(); 
+                let includes;
+                for(let i in favorites){
+                    includes = favorites[i].id.includes(id)
+                }
+                if(!includes){
+                    alert('Personagem não está na sua lista!');
+                    e.preventDefault();
+                } 
             }
         }
     }
