@@ -8,4 +8,12 @@
 
 ![preview](https://i.imgur.com/mRgXFWr.png)
 
+# Uso:
+
+## Acesse o site e clique no botão para habilitar o CORS, dada a configuração da API isso se faz necessário.
+
+### Habilitar CORS: [CORS Anywhere](https://cors-anywhere.herokuapp.com)
+
+![cors preview](https://i.imgur.com/6pjmtsp.gif)
+
 ## Link: em breve

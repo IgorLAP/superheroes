@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { HeroItemArea } from './styled';
 import {Link} from 'react-router-dom';
 
 export default (props)=>{
     let favorites = JSON.parse(localStorage.getItem('grupo')) || [];
+
+    const [hover, setHover] = useState(false);
+    
+    useEffect(()=>{
+        const resize = ()=>{
+        if(window.innerWidth <= 768){
+            setHover(true);
+        } else {
+            setHover(false);
+        }
+    }
+    window.addEventListener('resize', resize);    
+    },[]);
+
     const handleAdd = (e)=>{
         let url = e.target.parentElement.href;
         let id = url.replace('http://localhost:3000/hero/','');
@@ -13,10 +27,20 @@ export default (props)=>{
         if(localStorage.getItem('grupo') === null || localStorage.getItem('grupo') === "[]"){
             favorites.push(tempObj);
             localStorage.setItem('grupo', JSON.stringify(favorites));
+            window.location.href = '/';
         } else {
-            
-            favorites.push(tempObj);
-            localStorage.setItem('grupo', JSON.stringify(favorites));
+            let includes;
+            for(let i in favorites){
+                includes = favorites[i].id.includes(tempObj.id)
+            }
+            if(includes === false){
+                favorites.push(tempObj);
+                localStorage.setItem('grupo', JSON.stringify(favorites));
+                window.location.href = '/';
+            } else {
+                alert('Personagem já está na sua lista!');
+                e.preventDefault();  
+            }
         }
     }
     
@@ -30,8 +54,10 @@ export default (props)=>{
                 let index = favorites.indexOf(favorites[i]);
                 favorites.splice(index,1);
                 localStorage.setItem('grupo', JSON.stringify(favorites));
-            } else{
-                console.log(favorites[i].src === src)
+                window.location.href = '/';
+            } else {
+                alert('Personagem não está na sua lista!');
+                e.preventDefault(); 
             }
         }
     }
@@ -44,8 +70,8 @@ export default (props)=>{
                     <p>{props.data.name}</p>
                     <img className="heroImg" src={props.data.images.md} alt={props.data.name} />
                 </div>
-                <div onClick={handleAdd} className="add" title="Adicionar ao grupo">+</div>
-                <div onClick={handleRemove} className="remove" title="Remover do grupo">-</div>
+                <div onClick={handleAdd} className={hover ? 'add mobile' : 'add'} title="Adicionar ao grupo">+</div>
+                <div onClick={handleRemove} className={hover ? 'remove mobile' : 'remove'} title="Remover do grupo">-</div>
             </Link>
         </HeroItemArea>
     );

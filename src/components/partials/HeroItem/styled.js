@@ -28,6 +28,10 @@ export const HeroItemArea = styled.div`
                 width: 15px;
                 font-size: 20px;
                 text-align: center;
+
+                &.mobile{
+                    display: block;
+                }
             }
             .add{
                 position: relative;

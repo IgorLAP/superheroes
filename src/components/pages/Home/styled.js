@@ -86,6 +86,7 @@ export const HomeArea = styled.div`
 
         .itemHero{
             width: 20%;
+            margin-right: 25px;
         }
 
         
@@ -134,6 +135,10 @@ export const HomeArea = styled.div`
     }
     .itemHero{
         width: 23% !important;
+        margin-right: 10px;
+    }
+    .createGroup, .viewGroups{
+        margin-right: 10px !important;
     }
 }
 @media (max-width: 425px){
@@ -156,8 +161,6 @@ export const HomeArea = styled.div`
     }
     .groups{
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         
         button{
             width: 200px;
@@ -171,6 +174,7 @@ export const HomeArea = styled.div`
 
         .itemHero{
             width: 45% !important;
+            margin-right: 10px;
         }
     }
 }
