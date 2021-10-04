@@ -1,11 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import { HeroItemArea } from './styled';
 import {Link} from 'react-router-dom';
+import Modal from '../Modal';
 
 export default (props)=>{
     let favorites = JSON.parse(localStorage.getItem('grupo')) || [];
 
     const [hover, setHover] = useState(false);
+    const [msg, setMsg] = useState('');
+    const [modalMsg, setModalMsg] = useState(true);
+
+    const handleModalMsg = ()=>{
+        setModalMsg(true);
+    }
+
     
     useEffect(()=>{
         const resize = ()=>{
@@ -39,8 +47,9 @@ export default (props)=>{
                 localStorage.setItem('grupo', JSON.stringify(favorites));
                 window.location.href = '/';
             } else {
-                alert('Personagem já está na sua lista!');
-                e.preventDefault();  
+                e.preventDefault();
+                setMsg('Personagem já está na sua lista!');
+                window.location.href = '/';  
             }
         }
     }
@@ -63,8 +72,9 @@ export default (props)=>{
                     includes = favorites[i].id.includes(id)
                 }
                 if(!includes){
-                    alert('Personagem não está na sua lista!');
                     e.preventDefault();
+                    setMsg('Personagem não está na sua lista!');
+                    window.location.href = '/';
                 } 
             }
         }
@@ -72,6 +82,7 @@ export default (props)=>{
 
     
     return(
+        <>
         <HeroItemArea className="itemHero">
             <Link to={`/hero/${props.data.id}`} >
                 <div className="resultItem">
@@ -82,5 +93,9 @@ export default (props)=>{
                 <div onClick={handleRemove} className={hover ? 'remove mobile' : 'remove'} title="Remover do grupo">-</div>
             </Link>
         </HeroItemArea>
+        {msg !== '' &&
+            <Modal setModalMsg={setModalMsg} alertMessage={msg} />
+        }
+        </>
     );
 }

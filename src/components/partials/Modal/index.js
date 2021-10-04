@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {ModalBackground, ModalArea} from './styled';
 import {Link} from 'react-router-dom';
 
@@ -9,6 +9,9 @@ const Modal = (props)=> {
     const handleBack = ()=>{
         props.setCreate(false);
         props.setView(false);
+    }
+    const handleBackNew = ()=>{
+        props.setModalMsg(false);
     }
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -21,6 +24,7 @@ const Modal = (props)=> {
             <ModalBackground>
                 <ModalArea>
                     <div className="closeBtn" onClick={handleBack}><span>X</span></div>
+                    <p>{props.alertMessage}</p>
                     {/*<p>Criar/Editar Grupo</p>
                     <form onClick={handleSubmit}>
                         <input type="text" value={group} onChange={e=>setGroup(e.target.value)} placeholder="Nome do grupo:" />
@@ -43,6 +47,14 @@ const Modal = (props)=> {
                         )
                     }
                     </div>
+                </ModalArea>
+            </ModalBackground>
+        }
+        {props.alertMessage &&
+            <ModalBackground>
+                <ModalArea>
+                    <div className="closeBtn" onClick={handleBackNew}><span>X</span></div>
+                    <p>{props.alertMessage}</p>
                 </ModalArea>
             </ModalBackground>
         }
