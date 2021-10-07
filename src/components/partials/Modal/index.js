@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 const Modal = (props)=> {
     const [ groupsList, setGroupsList] = useState( JSON.parse(localStorage.getItem('grupo')));
 
-
     const handleBack = ()=>{
         props.setCreate(false);
         props.setView(false);

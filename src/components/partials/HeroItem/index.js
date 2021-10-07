@@ -38,46 +38,54 @@ export default (props)=>{
             localStorage.setItem('grupo', JSON.stringify(favorites));
             window.location.href = '/';
         } else {
-            let includes;
-            for(let i in favorites){
-                includes = favorites[i].id.includes(tempObj.id)
+            let exits = [];
+            for(let i=0; i<favorites.length;i++){
+                if(favorites[i].src.includes(tempObj.src) === false){
+                    exits.push(false);
+                } else {
+                    exits.push(true);
+                }   
             }
-            if(includes === false){
-                favorites.push(tempObj);
-                localStorage.setItem('grupo', JSON.stringify(favorites));
+            if(exits.includes(true)){
+                e.preventDefault();
+                setMsg('Personagem já está na sua lista!');
                 window.location.href = '/';
             } else {
                 e.preventDefault();
-                setMsg('Personagem já está na sua lista!');
-                window.location.href = '/';  
+                favorites.push(tempObj);
+                setMsg('Personagem adicionado à sua lista!');
+                localStorage.setItem('grupo', JSON.stringify(favorites));
+                window.location.href = '/';
             }
         }
     }
-    
+
     const handleRemove = (e)=>{
+        e.preventDefault();
         let url = e.target.parentElement.href;
         let currentUrl = window.location.href.toString();
         let id = url.replace(currentUrl+'hero/','');
         let src = e.target.previousElementSibling.previousElementSibling.children[1].src;
         
+        let exits = [];
         for(let i=0;i<favorites.length; i++){
-            if(favorites[i].src === src){
-                let index = favorites.indexOf(favorites[i]);
-                favorites.splice(index,1);
-                localStorage.setItem('grupo', JSON.stringify(favorites));
-                window.location.href = '/';
+            if(favorites[i].src !== src){
+                exits.push(false);
             } else {
-                let includes;
-                for(let i in favorites){
-                    includes = favorites[i].id.includes(id)
-                }
-                if(!includes){
-                    e.preventDefault();
-                    setMsg('Personagem não está na sua lista!');
-                    window.location.href = '/';
-                } 
+                exits.push(true);
             }
         }
+        if(exits.every(i=>i===false)){
+            setMsg('Personagem não está na sua lista!');
+            window.location.href = '/';
+        }
+        if(exits.includes(true)){
+            let index = exits.indexOf(true);
+            favorites.splice(index,1);
+            setMsg('Personagem excluido da sua lista!');
+            localStorage.setItem('grupo', JSON.stringify(favorites));
+            window.location.href = '/';  
+        }  
     }
 
     
