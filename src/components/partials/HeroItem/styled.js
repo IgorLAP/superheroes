@@ -56,4 +56,17 @@ export const HeroItemArea = styled.div`
         font-size: 15px;
     }
 }
+@media (max-width: 425px){
+    .add,.remove{
+        width: 15px;
+        font-size: 17px;
+        right: -110%;
+    }
+    .add{
+        top: -75%;
+    }
+    .remove{
+        top: -65%;
+    }
+}
 `;

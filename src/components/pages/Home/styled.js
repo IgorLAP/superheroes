@@ -173,8 +173,9 @@ export const HomeArea = styled.div`
     .allHeroes{
 
         .itemHero{
-            width: 45% !important;
-            margin-right: 10px;
+            width: 110px !important;
+            height: 230px;
+            margin-right: 25px;
         }
     }
 }

@@ -13,7 +13,6 @@ export default (props)=>{
     const handleModalMsg = ()=>{
         setModalMsg(true);
     }
-
     
     useEffect(()=>{
         const resize = ()=>{
@@ -23,7 +22,7 @@ export default (props)=>{
             setHover(false);
         }
     }
-    window.addEventListener('resize', resize);    
+    setInterval(resize,2000);    
     },[]);
 
     const handleAdd = (e)=>{
@@ -35,6 +34,7 @@ export default (props)=>{
         
         if(localStorage.getItem('grupo') === null || localStorage.getItem('grupo') === "[]"){
             favorites.push(tempObj);
+            setMsg('Personagem adicionado ao seu grupo!');
             localStorage.setItem('grupo', JSON.stringify(favorites));
             window.location.href = '/';
         } else {
@@ -48,12 +48,12 @@ export default (props)=>{
             }
             if(exits.includes(true)){
                 e.preventDefault();
-                setMsg('Personagem já está na sua lista!');
+                setMsg('Personagem já está no seu grupo!');
                 window.location.href = '/';
             } else {
                 e.preventDefault();
                 favorites.push(tempObj);
-                setMsg('Personagem adicionado à sua lista!');
+                setMsg('Personagem adicionado ao seu grupo!');
                 localStorage.setItem('grupo', JSON.stringify(favorites));
                 window.location.href = '/';
             }
@@ -76,19 +76,20 @@ export default (props)=>{
             }
         }
         if(exits.every(i=>i===false)){
-            setMsg('Personagem não está na sua lista!');
+            setMsg('Personagem não está no seu grupo!');
             window.location.href = '/';
         }
         if(exits.includes(true)){
             let index = exits.indexOf(true);
             favorites.splice(index,1);
-            setMsg('Personagem excluido da sua lista!');
+            setMsg('Personagem excluido do seu grupo!');
             localStorage.setItem('grupo', JSON.stringify(favorites));
-            window.location.href = '/';  
+            window.location.href = '/';
         }  
     }
 
     
+        
     return(
         <>
         <HeroItemArea className="itemHero">
