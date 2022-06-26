@@ -1,8 +1,8 @@
-import './App.css';
-import Header from './components/partials/Header';
-import Footer from './components/partials/Footer';
+import { BrowserRouter } from 'react-router-dom';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Routes from './Routes';
-import {BrowserRouter} from 'react-router-dom';
 
 function App() {
   return (

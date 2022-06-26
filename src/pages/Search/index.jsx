@@ -1,29 +1,30 @@
-import React, {useState, useEffect} from 'react';
-import {SearchArea} from './styled';
-import {PageContainer} from '../../partials';
-import SuperheroAPI from '../../../helpers/SuperheroAPI';
-import {useLocation, Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+
+import { SearchArea } from './styled';
+import { PageContainer } from '../../components';
+import SuperheroAPI from '../../lib/SuperheroAPI';
 
 
-const Search = ()=>{
+const Search = () => {
     const api = SuperheroAPI();
 
-    const useQueryString = ()=>{
-        return new URLSearchParams( useLocation().search );
+    const useQueryString = () => {
+        return new URLSearchParams(useLocation().search);
     }
     const query = useQueryString();
 
     const [herosList, setHerosList] = useState('');
     const [loading, setLoading] = useState(true);
-    
 
-    useEffect(()=>{
-        const getSearch = async()=>{
-            const req = await api.search( query.get('q') );
+
+    useEffect(() => {
+        const getSearch = async () => {
+            const req = await api.search(query.get('q'));
             setHerosList(req.results);
         }
         getSearch();
-    },[])
+    }, [])
 
 
     return (
@@ -40,7 +41,7 @@ const Search = ()=>{
                     {herosList === '' &&
                         <img className="loading" src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="loading" />
                     }
-                    {herosList && herosList.map((i,k)=>
+                    {herosList && herosList.map((i, k) =>
                         <Link to={`/hero/${i.id}`} key={k}>
                             <div className="resultItem">
                                 <p>{i.name}</p>
